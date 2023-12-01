@@ -1,0 +1,68 @@
+<html>
+<style>
+body {font-family: sans-serif;}
+ul { list-style-type: none; }
+pre, div { 	box-sizing: border-box; margin: 10px; border: 1px solid #ccc; background-color: #efefef; vertical-align: top; padding: 2em;}
+pre { font-family: monospace;}
+</style>
+<body>
+	<blockquote>Bonjour</blockquote>
+<pre>two1nine
+eightwothree
+abcone2threexyz
+xtwone3four
+4nineeightseven2
+zoneight234
+7pqrstsixteen</pre>
+<code>
+	</code>
+
+
+
+<script	src="https://code.jquery.com/jquery-3.1.1.min.js"
+		integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+		crossorigin="anonymous"></script>
+<script>
+$(document).ready(function() {
+	var replaceOne = $("pre").text().replace(/one/g, "o1e")
+	var replaceTwo = replaceOne.replace(/two/g, "t2o")
+	var replaceThree = replaceTwo.replace(/three/g, "t3e")
+	var replaceFour = replaceThree.replace(/four/g, "f4r")
+	var replaceFive = replaceFour.replace(/five/g, "f5e")
+	var replaceSix = replaceFive.replace(/six/g, "s6x")
+	var replaceSeven = replaceSix.replace(/seven/g, "s7n")
+	var replaceEight = replaceSeven.replace(/eight/g, "e8t")
+	var ultimateReplace = replaceEight.replace(/nine/g, "n9e")
+
+	console.log(ultimateReplace)
+
+	var linesLength = ultimateReplace.split("\n").length
+	var figures = 0
+	for (var i=0; i<linesLength; i++) {
+		var signsLength = ultimateReplace.split("\n")[i].split("").length
+		var figuresLength = 0
+		var lineFigures = ""
+		for (var j=0; j<signsLength; j++) {
+			if (isNaN(ultimateReplace.split("\n")[i].split("")[j])) {
+				// do nothing
+			}
+			else {
+				figuresLength++
+				lineFigures = lineFigures + ultimateReplace.split("\n")[i].split("")[j]
+			}
+		}
+		var firstNumber = lineFigures[0]
+		var lastNumber = lineFigures[figuresLength-1]
+
+		figures = parseInt(figures + parseInt(firstNumber+lastNumber))
+
+	}
+
+
+	$("code").append(figures)
+
+
+});
+</script>
+</body>
+</html>
